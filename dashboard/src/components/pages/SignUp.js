@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const SignUp = () => {
+const SignUp = ({updateUserState}) => {
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
@@ -28,7 +28,8 @@ const SignUp = () => {
     })
       .then((res) => res.json())
       .then((email) => email);
-    navigate("/");
+      updateUserState()
+      navigate("/login");
   };
 
   return (

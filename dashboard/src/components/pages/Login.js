@@ -18,24 +18,29 @@ function Login({ setUser }) {
     const form = event.target.form;
 
     const data = Object.fromEntries(new FormData(form));
-
+    console.log(data.email)
     fetch("/api/sessions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     })
+  
       .then((res) => res.json())
-
       .then((res) => {
         if (res.error) {
           console.log("error");
           navigate("/login");
+          
         } else {
+          updateUserState()
           console.log("correct");
           navigate("/");
-          // state.loggedInUser = res
         }
-      });
+      })
+  const updateUserState = () => {
+    setUser([data.email])
+  }
+    
   };
   return (
     <div className="login">
