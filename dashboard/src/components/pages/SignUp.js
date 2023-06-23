@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-
 
 const SignUp = () => {
   const [inputs, setInputs] = useState({
@@ -10,17 +9,18 @@ const SignUp = () => {
     password: "",
   });
 
+  const navigate = useNavigate();
+
   const handleChange = (event) => {
     setInputs((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   };
 
-
   const handleSubmit = (event) => {
-    event.preventDefault()
-    const form = event.target.form
+    event.preventDefault();
+    const form = event.target.form;
 
-    const data = Object.fromEntries(new FormData(form))
-    console.log(data)
+    const data = Object.fromEntries(new FormData(form));
+
     fetch("/api/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -28,7 +28,9 @@ const SignUp = () => {
     })
       .then((res) => res.json())
       .then((email) => email);
+    navigate("/");
   };
+
   return (
     <div className="sign-up">
       <h1>Sign Up</h1>
@@ -54,7 +56,9 @@ const SignUp = () => {
           name="password"
           onChange={handleChange}
         />
-        <button onClick={handleSubmit}>Sign up</button>
+        <button onClick={handleSubmit} href="/">
+          Sign up
+        </button>
         <span>
           Do you have an account? <Link to="/login">Login</Link>
         </span>
