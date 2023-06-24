@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const SignUp = ({updateUserState}) => {
+const SignUp = ({setUser}) => {
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
@@ -20,22 +20,21 @@ const SignUp = ({updateUserState}) => {
     const form = event.target.form;
 
     const data = Object.fromEntries(new FormData(form));
-
+    console.log(data)
     fetch("/api/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((email) => email);
-      updateUserState()
-      navigate("/login");
-  };
-
+      .then((email) => email)
+      navigate("/login")
+  }
+  
   return (
     <div className="sign-up">
       <h1>Sign Up</h1>
-      <form action="">
+      <form >
         <input
           required
           type="text"
@@ -57,7 +56,7 @@ const SignUp = ({updateUserState}) => {
           name="password"
           onChange={handleChange}
         />
-        <button onClick={handleSubmit} href="/">
+        <button onClick={handleSubmit}>
           Sign up
         </button>
         <span>

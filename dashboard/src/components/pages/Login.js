@@ -28,13 +28,14 @@ function Login({ setUser }) {
       .then((res) => res.json())
       .then((res) => {
         if (res.error) {
-          console.log("error");
+          console.log( "error: email and/or password are incorrect");
           navigate("/login");
           
         } else {
           updateUserState()
           console.log("correct");
           navigate("/");
+         
         }
       })
   const updateUserState = () => {
@@ -45,7 +46,7 @@ function Login({ setUser }) {
   return (
     <div className="login">
       <h1>Login</h1>
-      <form action="">
+      <form >
         <input
           required
           type="email"
@@ -69,4 +70,6 @@ function Login({ setUser }) {
   );
 }
 
-export default Login;
+
+
+  export default Login;
