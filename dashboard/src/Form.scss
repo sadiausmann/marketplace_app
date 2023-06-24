@@ -5,7 +5,7 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-body{
+section{
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -14,6 +14,7 @@ body{
 }
 
 .container{
+
   position: relative;
   text-align:center;
   max-width: 430px;

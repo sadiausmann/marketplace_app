@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import "../../Form.css";
+import "../../Form.scss";
 
 const SignUp = ({ setUser }) => {
   const [inputs, setInputs] = useState({
@@ -33,6 +33,7 @@ const SignUp = ({ setUser }) => {
   };
 
   return (
+    <section>
     <div className="sign-up">
       <div className="container">
         <h1>Sign Up</h1>
@@ -80,6 +81,7 @@ const SignUp = ({ setUser }) => {
         </form>
       </div>
     </div>
+    </section>
   );
 };
 

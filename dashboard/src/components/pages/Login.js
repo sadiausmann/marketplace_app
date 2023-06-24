@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../../Form.css"
+import "../../Form.scss"
 
 function Login({ setUser }) {
   const [inputs, setInputs] = useState({
@@ -41,6 +41,7 @@ function Login({ setUser }) {
     };
   };
   return (
+    <section>
     <div className="login">
       <div className="container">
         <h1>Login</h1>
@@ -79,6 +80,7 @@ function Login({ setUser }) {
         </form>
       </div>
     </div>
+    </section>
   );
 }
 

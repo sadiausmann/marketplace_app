@@ -1,0 +1,91 @@
+header{
+  padding: 100px;
+  padding: 100px;
+  font-size: x-large;
+  background-image: url("https://media.istockphoto.com/id/932542786/photo/abstract-blur-people-in-modern-shopping-mall-interior-defocused-background.webp?b=1&s=170667a&w=0&k=20&c=RnDy2xRDZuJGkI39vfRcrUBn75ZK6x0GSAID3MfKcMY=");
+  background-size: cover; /* Adjust the background size as needed */
+} 
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 10px; 
+}
+
+.logo {
+  color: white;
+  font-size: 20px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-right p {
+  margin: 0 10px; 
+}
+
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: rgb(3, 5, 26);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
