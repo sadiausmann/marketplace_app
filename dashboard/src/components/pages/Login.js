@@ -42,10 +42,10 @@ function Login({ setUser }) {
   };
   return (
     <div className="login">
-      <div class="container">
+      <div className="container">
         <h1>Login</h1>
         <form>
-          <div class="input-box">
+          <div className="input-box">
             <input
               required
               type="email"
@@ -54,7 +54,7 @@ function Login({ setUser }) {
               onChange={handleChange}
             />
           </div>
-          <div class="input-box">
+          <div className="input-box">
             <input
               required
               type="password"
@@ -63,15 +63,15 @@ function Login({ setUser }) {
               onChange={handleChange}
             />
           </div>
-          <div class="input-box button">
-            <button class="button" onClick={handleLogin}>
+          <div className="input-box button">
+            <button className="button" onClick={handleLogin}>
               Login
             </button>
           </div>
-          <div class="text">
+          <div className="text">
             <h3>
               Don't you have an account?
-              <span class="link">
+              <span className="link">
                 <Link to="/signup">Sign Up</Link>
               </span>
             </h3>

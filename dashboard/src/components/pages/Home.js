@@ -8,7 +8,7 @@ function Home({ user, setUser }) {
   useEffect(() => {}, []);
   return (
    
-    <div>
+    <div className="home">
       <h1>Homepage</h1>
       <nav>
         {user ? (
