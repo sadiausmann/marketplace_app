@@ -1,8 +1,9 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import "../../Form.css";
 
-const SignUp = ({setUser}) => {
+const SignUp = ({ setUser }) => {
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
@@ -20,49 +21,64 @@ const SignUp = ({setUser}) => {
     const form = event.target.form;
 
     const data = Object.fromEntries(new FormData(form));
-    console.log(data)
+    console.log(data);
     fetch("/api/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((email) => email)
-      navigate("/login")
-  }
-  
+      .then((email) => email);
+    navigate("/login");
+  };
+
   return (
     <div className="sign-up">
-      <h1>Sign Up</h1>
-      <form >
-        <input
-          required
-          type="text"
-          placeholder="Username"
-          name="name"
-          onChange={handleChange}
-        />
-        <input
-          required
-          type="email"
-          placeholder="Email"
-          name="email"
-          onChange={handleChange}
-        />
-        <input
-          required
-          type="password"
-          placeholder="Password"
-          name="password"
-          onChange={handleChange}
-        />
-        <button onClick={handleSubmit}>
-          Sign up
-        </button>
-        <span>
-          Do you have an account? <Link to="/login">Login</Link>
-        </span>
-      </form>
+      <div className="container">
+        <h1>Sign Up</h1>
+        <form>
+          <div className="input-box">
+            <input
+              required
+              type="text"
+              placeholder="Username"
+              name="name"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="input-box">
+            <input
+              required
+              type="email"
+              placeholder="Email"
+              name="email"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="input-box">
+            <input
+              required
+              type="password"
+              placeholder="Password"
+              name="password"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="input-box button">
+            <button className="button" onClick={handleSubmit}>
+              Sign up
+            </button>
+          </div>
+          <div className="text">
+            <h3>
+              Already have an account?
+              <span className="link">
+                <Link to="/login">Login Now</Link>
+              </span>
+            </h3>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
