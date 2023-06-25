@@ -41,7 +41,7 @@ function Login({ setUser }) {
     };
   };
   return (
-    <section>
+    <section className="card">
     <div className="login">
       <div className="container">
         <h1>Login</h1>

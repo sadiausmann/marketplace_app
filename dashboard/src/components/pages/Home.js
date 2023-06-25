@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import Logout  from "./Logout"
-// import Products from "./Product"
+import Products from "./Product"
 import "../../Navbar.scss"
+
  
 
 function Home({ user, setUser }) {
@@ -16,23 +17,26 @@ function Home({ user, setUser }) {
       </header>
       
       <nav>
-      <div class="navbar">
+      <div className="navbar">
       
       
-      <div class="dropdown">
-            <button class="dropbtn">Search by category 
-      <i class="fa fa-caret-down"></i>
+      <div className="dropdown">
+            <button className="dropbtn">Search by category 
+      <i className="fa fa-caret-down"></i>
     </button>
-    <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
+    <div className="dropdown-content">
+      <a href="">Link 1</a>
+      <a href="">Link 2</a>
+      <a href="">Link 3</a>
     </div>
             </div>
-            <div class="navbar-right">
-        
+            <div className="navbar-right">
+            
           {user ? (
+            <>
+            <p><Link to="/postanadd">Post an ad</Link></p>
             <p><Logout setUser={setUser}/></p>
+            </>
           ) : (
             <>
               <p><Link to="/signup">Sign Up</Link></p>
@@ -45,7 +49,7 @@ function Home({ user, setUser }) {
 
       </nav>
       <section>
-        {/* <Products /> */}
+        <Products />
       </section>
     </div>
  

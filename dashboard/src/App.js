@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./components/Pages/Home";
 import Login from "./components/Pages/Login";
 import SignUp from "./components/Pages/SignUp";
+import PostAnAdd from "./components/Pages/PostAnAdd";
 
 function App() {
 
@@ -23,7 +24,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home user={user} setUser={setUser}/>} />
         <Route path="/login" element={<Login setUser={setUser} />} />
-        <Route path="/signUp" element={<SignUp setUser={setUser} />} />
+        <Route path="/signUp" element={<SignUp setUser={setUser} />}/>
+        <Route path="/postAnAdd" element={<PostAnAdd setUser={setUser} />}/>
       </Routes>
     </div>
   );

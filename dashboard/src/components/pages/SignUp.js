@@ -33,7 +33,7 @@ const SignUp = ({ setUser }) => {
   };
 
   return (
-    <section>
+    <section className="card">
     <div className="sign-up">
       <div className="container">
         <h1>Sign Up</h1>
