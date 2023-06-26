@@ -32,11 +32,20 @@
 // export default Products;
 
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom"
 import "../../Form.scss";
 
 function Products({ user }) {
   const [productsList, setProductsList] = useState([]);
   const [allProductsInventory, setAllProductsInventory] = useState([]);
+  // const [product, setProduct] = useState({
+  //   name: "",
+  //   image_url: "",
+  //   category: "",
+  //   price: "",
+  //   description: "",
+  //   location: "",
+  // });
 
   // const [newProduct, setNewProduct] = useState({
   //   name: "",
@@ -135,6 +144,9 @@ function Products({ user }) {
     setProductsList(newProductList);
   };
 
+
+  
+
   // function deleteProduct(productId) {
   //   fetch(`/api/products/${productId}`, {
   //     method: "DELETE",
@@ -157,6 +169,8 @@ function Products({ user }) {
   //   // Implement the logic to edit a product
   //   // You can create a separate form or modal for editing and update the product data via a PUT request to the backend API
   // }
+
+
 
   return (
     <section>
@@ -233,7 +247,9 @@ function Products({ user }) {
       <div className="productsList">
         {productsList.map((product) => (
           <section key={product.id} className="product">
-            <div className="name">Product Name: {product.name}</div>
+            <Link to={`/api/products/search/?p=${product.id}`} className="name">
+  Product Name: {product.name}
+</Link>
             <img src={product.image_url} alt="" />
             <div className="category">Category: {product.category}</div>
             <div className="price">Price: {product.price}</div>

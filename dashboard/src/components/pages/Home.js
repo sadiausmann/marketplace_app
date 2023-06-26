@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import Logout from "./Logout";
-import Products from "./Product";
+import Products from "./Products";
 import "../../Navbar.scss";
 // import GetFilterList from "./Search"
 
