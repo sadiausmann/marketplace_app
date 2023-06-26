@@ -36,6 +36,8 @@ import "../../Form.scss"
 
 function Products({ user }) {
   const [productsList, setProductsList] = useState([]);
+  const [allProductsInventory, setAllProductsInventory] = useState([])
+
   
 
   // const [newProduct, setNewProduct] = useState({
@@ -55,11 +57,19 @@ function Products({ user }) {
     fetch("/api/products")
       .then((res) => res.json())
       
-      .then((res) => 
-        // console.log(res))
-        setProductsList(res))
-  
-  }
+      .then((res) => {
+        // console.log (res))
+        setProductsList(res)
+        setAllProductsInventory(res)
+      })}
+    
+      const handleSearchChange = (e) => {
+        const search = e.target.value.toLowerCase();
+        const newProductList = allProductsInventory.filter((product) =>
+          product.name.toLowerCase().includes(search)
+        );
+        setProductsList(newProductList);
+      };
 
   function deleteProduct(productId) {
     fetch(`/api/products/${productId}`, {
@@ -87,6 +97,14 @@ function Products({ user }) {
   return (
 
     <section className="homeProductSection">
+      <form action="">
+        <input
+          type="text"
+          onChange={handleSearchChange}
+          placeholder="Search by product name"
+          aria-label="Search"
+        />
+      </form>
     <div className="productsList">
       {productsList.map((product) => (
         <section key={product.id} className="product">
