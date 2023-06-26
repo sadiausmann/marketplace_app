@@ -36,14 +36,16 @@ import "../../Form.scss"
 
 function Products({ user }) {
   const [productsList, setProductsList] = useState([]);
-  const [newProduct, setNewProduct] = useState({
-    name: "",
-    image_url: "",
-    category: "",
-    price: "",
-    description: "",
-    location: "",
-  });
+  
+
+  // const [newProduct, setNewProduct] = useState({
+  //   name: "",
+  //   image_url: "",
+  //   category: "",
+  //   price: "",
+  //   description: "",
+  //   location: "",
+  // });
 
   useEffect(() => {
     getProductList();
@@ -52,7 +54,11 @@ function Products({ user }) {
   function getProductList() {
     fetch("/api/products")
       .then((res) => res.json())
-      .then((res) => setProductsList(res));
+      
+      .then((res) => 
+        // console.log(res))
+        setProductsList(res))
+  
   }
 
   function deleteProduct(productId) {
@@ -69,16 +75,17 @@ function Products({ user }) {
 
   }
 
-  function canEditOrDeleteProduct(product) {
-    return user && user === product.createdBy;
-  }
+  // function canEditOrDeleteProduct(product) {
+  //     return user && user === product.email;
+  // }
 
-  function editProduct(productId) {
-    // Implement the logic to edit a product
-    // You can create a separate form or modal for editing and update the product data via a PUT request to the backend API
-  }
+  // function editProduct(productId) {
+  //   // Implement the logic to edit a product
+  //   // You can create a separate form or modal for editing and update the product data via a PUT request to the backend API
+  // }
 
   return (
+
     <section className="homeProductSection">
     <div className="productsList">
       {productsList.map((product) => (
@@ -89,17 +96,23 @@ function Products({ user }) {
           <div className="price">Price: {product.price}</div>
           <div className="description">Description: {product.description}</div>
           <div className="location">Location: {product.location}</div>
-          {canEditOrDeleteProduct(product) && (
+          {/* {product.email === user.email && (
+       
             <div>
               <button onClick={() => editProduct(product.id)}>Edit</button>
               <button onClick={() => deleteProduct(product.id)}>Delete</button>
             </div>
-          )}
+          )} */}
         </section>
       ))}
     </div>
+          
+
     </section>
   );
 }
 
-export default Products;
+
+
+
+export default Products
