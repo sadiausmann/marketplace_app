@@ -100,7 +100,7 @@ function PostAnAdd({ user }) {
   
           <div className="input-box">
             <input
-              type="text"
+              type="number"
               name="price"
               value={newProduct.price}
               onChange={handleInputChange}
