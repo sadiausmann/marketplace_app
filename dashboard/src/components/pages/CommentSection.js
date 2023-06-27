@@ -1,8 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-function CommentSection() {
+
+function CommentSection({ user , productId }) {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
+
+  useEffect(() => {
+    getProductList();
+  }, []);
+
+  function getProductList() {
+    fetch("/api/COMMENTS")
+      .then((res) => res.json())
+
+      .then((res) => {
+        // console.log (res))
+        setComments(res);
+      });
+  }
 
   const handleCommentChange = (e) => {
     setNewComment(e.target.value);
@@ -10,11 +25,25 @@ function CommentSection() {
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
-    const comment = {
-    text: newComment,
+    const commentData = {
+      comment: newComment,
+      productId: productId,
+      user: {user}
     };
-    setComments([...comments, comment]);
-    setNewComment("");
+    fetch("/api/comments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(commentData),
+    })
+      .then((res) => res.json())
+      .then((createdComment) => {
+        console.log(createdComment)
+        setComments([...comments, createdComment]);
+        console.log(comments)
+        setNewComment("");
+      })
   };
 
   return (
@@ -32,7 +61,7 @@ function CommentSection() {
       <ul>
         {comments.map((comment) => (
           <li key={comment.id}>
-            <p>{comment.text}</p>
+            <p>{comment.comment}</p>
           </li>
         ))}
       </ul>

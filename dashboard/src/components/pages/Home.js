@@ -1,13 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 import Logout from "./Logout";
 import Products from "./Products";
 import "../../Navbar.scss";
-// import GetFilterList from "./Search"
 
 function Home({ user, setUser }) {
-
   return (
     <div className="home">
       <header>
@@ -15,9 +12,7 @@ function Home({ user, setUser }) {
       </header>
 
       <nav>
-        
-          
-      <div className="navbar">
+        <div className="navbar">
           <div className="navbar-right">
             {user ? (
               <>

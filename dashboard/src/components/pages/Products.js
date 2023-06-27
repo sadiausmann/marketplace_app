@@ -32,13 +32,14 @@
 // export default Products;
 
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import "../../Form.scss";
-import CommentSection from './CommentSection';
+import CommentSection from "./CommentSection";
 
 function Products({ user }) {
   const [productsList, setProductsList] = useState([]);
   const [allProductsInventory, setAllProductsInventory] = useState([]);
+  const [selectedProductId, setSelectedProductId] = useState(null);
   // const [product, setProduct] = useState({
   //   name: "",
   //   image_url: "",
@@ -145,9 +146,6 @@ function Products({ user }) {
     setProductsList(newProductList);
   };
 
-
-  
-
   // function deleteProduct(productId) {
   //   fetch(`/api/products/${productId}`, {
   //     method: "DELETE",
@@ -170,8 +168,6 @@ function Products({ user }) {
   //   // Implement the logic to edit a product
   //   // You can create a separate form or modal for editing and update the product data via a PUT request to the backend API
   // }
-
-
 
   return (
     <section>
@@ -216,11 +212,11 @@ function Products({ user }) {
         <div className="dropdown">
           <button className="dropbtn">Search by price</button>
           <input
-            type="integer"
+            type="number"
             onChange={handlePriceSearchChange}
             placeholder=""
             aria-label="Search"
-          />
+          ></input>
         </div>
 
         <div className="dropdown">
@@ -248,9 +244,9 @@ function Products({ user }) {
       <div className="productsList">
         {productsList.map((product) => (
           <section key={product.id} className="product">
-            <Link to={`/api/products/search/?p=${product.id}`} className="name">
-  Product Name: {product.name}
-</Link>
+            <Link to={`/api/products/search?p=${product.id}`} className="name">
+              Product Name: {product.name}
+            </Link>
             <img src={product.image_url} alt="" />
             <div className="category">Category: {product.category}</div>
             <div className="price">Price: {product.price}</div>
@@ -258,14 +254,7 @@ function Products({ user }) {
               Description: {product.description}
             </div>
             <div className="location">Location: {product.location}</div>
-            <CommentSection/>
-            {/* {product.email === user.email && (
-       
-            <div>
-              <button onClick={() => editProduct(product.id)}>Edit</button>
-              <button onClick={() => deleteProduct(product.id)}>Delete</button>
-            </div>
-          )} */}
+            <CommentSection productId={product.id} />
           </section>
         ))}
       </div>

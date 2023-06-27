@@ -13,7 +13,7 @@ function SingleProduct({ user, productId }) {
   
   function getSingleProduct() {
     
-    fetch(`/api/products/search/?p=${product.id}`)
+    fetch(`/api/products/search/?p=${productId}`)
       .then((res) => res.json())
       .then((data) => {
       let productInfo = (data.product) 
