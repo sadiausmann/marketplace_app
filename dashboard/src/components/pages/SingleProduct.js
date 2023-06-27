@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import CommentSection from "./Comment";
+import CommentSection from "./CommentSection";
 
 function SingleProduct({ user, productId }) {
   const [product, setProduct] = useState([]);

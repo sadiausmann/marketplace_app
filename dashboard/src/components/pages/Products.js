@@ -34,6 +34,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import "../../Form.scss";
+import CommentSection from './CommentSection';
 
 function Products({ user }) {
   const [productsList, setProductsList] = useState([]);
@@ -257,6 +258,7 @@ function Products({ user }) {
               Description: {product.description}
             </div>
             <div className="location">Location: {product.location}</div>
+            <CommentSection/>
             {/* {product.email === user.email && (
        
             <div>
