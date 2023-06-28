@@ -18,7 +18,7 @@ function App() {
         <Route path="/signUp" element={<SignUp setUser={setUser} />} />
         <Route path="/postAnAdd" element={<PostAnAdd setUser={setUser} />} />
         <Route
-          path="/api/products/search"
+          path="/api/products/search/:productId"
           element={<SingleProduct setUser={setUser} user={user} />}
         />
       </Routes>

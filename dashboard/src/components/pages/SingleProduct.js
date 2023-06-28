@@ -5,7 +5,7 @@ import CommentSection from "./CommentSection";
 function SingleProduct({ user}) {
   const [product, setProduct] = useState([]);
   const { productId } = useParams()
-  console.log({productId})
+  console.log(productId)
   useEffect(() => {
     getSingleProduct();
   }, []);

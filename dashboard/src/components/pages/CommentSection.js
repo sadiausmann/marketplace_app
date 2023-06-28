@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"
 
-
-function CommentSection({ user , productId }) {
+function CommentSection({ user , productId,updateComments }) {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   // console.log({user})
   useEffect(() => {
     getComments();
-  }, []);
+  }, [newComment]);
+
+  const navigate = useNavigate();
 
   function getComments() {
+    console.log(newComment)
     fetch(`/api/comments?productId=${productId}`)
       .then((res) => res.json())
       .then((res) => {
@@ -24,11 +27,14 @@ function CommentSection({ user , productId }) {
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
+    console.log(comments)
     const commentData = {
       comment: newComment,
       productId: productId,
       user: comments.user_id
     };
+    setComments([...comments,commentData])
+    
     fetch("/api/comments", {
       method: "POST",
       headers: {
@@ -42,6 +48,10 @@ function CommentSection({ user , productId }) {
         setComments([...comments, createdComment]);
         console.log(comments)
         setNewComment("");
+        console.log(newComment)
+        navigate("/")
+        updateComments(createdComment)
+
       })
   };
 
@@ -57,7 +67,6 @@ function CommentSection({ user , productId }) {
         />
         <button type="submit">Post Comment</button>
       </form>
-      
     </div>
   );
 }
@@ -65,9 +74,10 @@ function CommentSection({ user , productId }) {
 export default CommentSection;
 
 
+
 {/* <ul>
-        {comments.map((comment) => (
-          <li key={comment.id}>
-            <p>{comment.comment}</p>
-            {/* //I want to implement logic that each product have its own comments// */}
-        
+{comments.map((comment) => (
+  <li key={comment.id}>
+    <p>{comment.comment}</p>
+    </li>))}
+    </ul> */}

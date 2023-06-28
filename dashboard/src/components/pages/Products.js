@@ -116,6 +116,21 @@ function Products({ user }) {
     setProductsList(newProductList);
   };
 
+  const updateComments = (createdComment) => {
+    // Find the product in the productsList and update its comments
+    const updatedProductsList = productsList.map((product) => {
+      if (product.id === createdComment.productId) {
+        return {
+          ...product,
+          comments: [...product.comments, createdComment],
+        };
+      }
+      return product;
+    });
+
+    setProductsList(updatedProductsList);
+  };
+
   return (
     <section>
       <div className="navbar">
@@ -172,18 +187,18 @@ function Products({ user }) {
       <div className="productsList">
         {productsList.map((product) => (
           <section key={product.id} className="product">
-            <Link to={`/api/products/search?p=${product.id}`} className="name">
+            <Link to={`/api/products/search/${product.id}`} className="name">
               {product.name}
             </Link>
             <img src={product.image_url} alt="" />
             <div className="category">Category: {product.category}</div>
-            <div className="price">Price: {product.price}$</div>
+            <div className="price">Price:$ {product.price}</div>
             <div className="description">
               Description: {product.description}
             </div>
             <div className="location">Location: {product.location}</div>
 
-            <CommentSection productId={product.id} user={user} />
+            <CommentSection productId={product.id} user={user} updateComments={updateComments} />
             <div className="comments">
               Comments:
               {product.comments &&
