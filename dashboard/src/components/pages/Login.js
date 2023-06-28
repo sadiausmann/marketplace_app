@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../../Form.scss"
+import "../../Form.scss";
 
 function Login({ setUser }) {
   const [inputs, setInputs] = useState({
@@ -42,44 +42,44 @@ function Login({ setUser }) {
   };
   return (
     <section className="card">
-    <div className="login">
-      <div className="container">
-        <h1>Login</h1>
-        <form>
-          <div className="input-box">
-            <input
-              required
-              type="email"
-              placeholder="Email"
-              name="email"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="input-box">
-            <input
-              required
-              type="password"
-              placeholder="Password"
-              name="password"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="input-box button">
-            <button className="button" onClick={handleLogin}>
-              Login
-            </button>
-          </div>
-          <div className="text">
-            <h3>
-              Don't you have an account?
-              <span className="link">
-                <Link to="/signup">Sign Up</Link>
-              </span>
-            </h3>
-          </div>
-        </form>
+      <div className="login">
+        <div className="container">
+          <h1>Login</h1>
+          <form>
+            <div className="input-box">
+              <input
+                required
+                type="email"
+                placeholder="Email"
+                name="email"
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-box">
+              <input
+                required
+                type="password"
+                placeholder="Password"
+                name="password"
+                onChange={handleChange}
+              />
+            </div>
+            <div className="input-box button">
+              <button className="button" onClick={handleLogin}>
+                Login
+              </button>
+            </div>
+            <div className="text">
+              <h3>
+                Don't you have an account?
+                <span className="link">
+                  <Link to="/signup">Sign Up</Link>
+                </span>
+              </h3>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
     </section>
   );
 }

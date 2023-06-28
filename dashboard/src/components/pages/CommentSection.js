@@ -4,15 +4,14 @@ import React, { useState, useEffect } from "react";
 function CommentSection({ user , productId }) {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
-
+  // console.log({user})
   useEffect(() => {
-    getProductList();
+    getComments();
   }, []);
 
-  function getProductList() {
-    fetch("/api/COMMENTS")
+  function getComments() {
+    fetch(`/api/comments?productId=${productId}`)
       .then((res) => res.json())
-
       .then((res) => {
         // console.log (res))
         setComments(res);
@@ -28,7 +27,7 @@ function CommentSection({ user , productId }) {
     const commentData = {
       comment: newComment,
       productId: productId,
-      user: {user}
+      user: comments.user_id
     };
     fetch("/api/comments", {
       method: "POST",
@@ -48,7 +47,7 @@ function CommentSection({ user , productId }) {
 
   return (
     <div>
-      <h2>Comments</h2>
+      {/* <h2>Comments</h2> */}
       <form onSubmit={handleCommentSubmit}>
         <input
           type="text"
@@ -58,15 +57,17 @@ function CommentSection({ user , productId }) {
         />
         <button type="submit">Post Comment</button>
       </form>
-      <ul>
-        {comments.map((comment) => (
-          <li key={comment.id}>
-            <p>{comment.comment}</p>
-          </li>
-        ))}
-      </ul>
+      
     </div>
   );
 }
 
 export default CommentSection;
+
+
+{/* <ul>
+        {comments.map((comment) => (
+          <li key={comment.id}>
+            <p>{comment.comment}</p>
+            {/* //I want to implement logic that each product have its own comments// */}
+        

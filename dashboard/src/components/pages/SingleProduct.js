@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import CommentSection from "./CommentSection";
 
-function SingleProduct({ user, productId }) {
+function SingleProduct({ user}) {
   const [product, setProduct] = useState([]);
-  const [searchParams] = useSearchParams();
-
-  console.log(searchParams)
+  const { productId } = useParams()
+  console.log({productId})
   useEffect(() => {
     getSingleProduct();
   }, []);
   
   function getSingleProduct() {
-    
     fetch(`/api/products/search/?p=${productId}`)
       .then((res) => res.json())
       .then((data) => {

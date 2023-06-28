@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../Form.scss"
-
+import "../../Form.scss";
 
 function PostAnAdd({ user }) {
   const [productsList, setProductsList] = useState([]);
@@ -18,7 +17,7 @@ function PostAnAdd({ user }) {
 
   function createProduct(event) {
     event.preventDefault();
-    
+
     fetch("/api/products", {
       method: "POST",
       headers: {
@@ -39,15 +38,12 @@ function PostAnAdd({ user }) {
         });
         if (res.error) {
           console.log("error: incorrect");
-        
         } else {
           console.log("created");
           navigate("/");
         }
-      })
+      });
   }
-
-  
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -59,85 +55,102 @@ function PostAnAdd({ user }) {
 
   return (
     <section className="card">
+      <div className="productsList">
+        <div className="container">
+          <h2>Create Product</h2>
+          <form>
+            <div className="input-box">
+              <input
+                type="text"
+                name="name"
+                value={newProduct.name}
+                onChange={handleInputChange}
+                placeholder="Product Name"
+                required
+              />
+            </div>
 
-    
-    <div className="productsList">
-      <div className="container">
-        <h2>Create Product</h2>
-        <form>
-          <div className="input-box">
-            <input
-              type="text"
-              name="name"
-              value={newProduct.name}
-              onChange={handleInputChange}
-              placeholder="Product Name"
-              required
-            />
-          </div>
-  
-          <div className="input-box">
-            <input
-              type="text"
-              name="image_url"
-              value={newProduct.image_url}
-              onChange={handleInputChange}
-              placeholder="Image URL"
-              required
-            />
-          </div>
-  
-          <div className="input-box">
-            <input
-              type="text"
-              name="category"
-              value={newProduct.category}
-              onChange={handleInputChange}
-              placeholder="Category"
-              required
-            />
-          </div>
-  
-          <div className="input-box">
-            <input
-              type="number"
-              name="price"
-              value={newProduct.price}
-              onChange={handleInputChange}
-              placeholder="Price"
-              required
-            />
-          </div>
-  
-          <div className="input-box">
-            <input
-              type="text"
-              name="description"
-              value={newProduct.description}
-              onChange={handleInputChange}
-              placeholder="Description"
-              required
-            />
-          </div>
+            <div className="input-box">
+              <input
+                type="text"
+                name="image_url"
+                value={newProduct.image_url}
+                onChange={handleInputChange}
+                placeholder="Image URL"
+                required
+              />
+            </div>
 
-          <div className="input-box">
-            <input
-              type="text"
-              name="location"
-              value={newProduct.location}
-              onChange={handleInputChange}
-              placeholder="Location"
-              required
-            />
+            <div className="input-box">
+              <input
+                type="text"
+                name="category"
+                value={newProduct.category}
+                onChange={handleInputChange}
+                placeholder="Category"
+                required
+              />
+            </div>
+            {/* <div className="dropdown">
+          <button className="dropbtn">
+            Search 
+            <i className="fa fa-caret-down"></i>
+          </button>
+          <div className="dropdown-content">
+            <a> Price</button> <input
+            type="integer"
+            onChange={handlePriceSearchChange}
+            placeholder=""
+            aria-label="Search"
+          /></a>
+            <a>Books</a>
+            <a>Clothing</a>
+            <a>Electronics</a>
+            <a>Home</a>
+            <a>Miscellaneous</a>
+            <a>Vehicles</a>
           </div>
-          <div className="input-box button"></div>
-          <button onClick={createProduct}>Create</button>
-        </form>
+        </div> */}
+
+            <div className="input-box">
+              <input
+                type="number"
+                name="price"
+                value={newProduct.price}
+                onChange={handleInputChange}
+                placeholder="Price"
+                required
+              />
+            </div>
+
+            <div className="input-box">
+              <input
+                type="text"
+                name="description"
+                value={newProduct.description}
+                onChange={handleInputChange}
+                placeholder="Description"
+                required
+              />
+            </div>
+
+            <div className="input-box">
+              <input
+                type="text"
+                name="location"
+                value={newProduct.location}
+                onChange={handleInputChange}
+                placeholder="Location"
+                required
+              />
+            </div>
+            <div className="input-box button"></div>
+            <button onClick={createProduct}>Create</button>
+          </form>
+        </div>
       </div>
-    </div>
     </section>
   );
-   
 }
 
-export default PostAnAdd
+export default PostAnAdd;
